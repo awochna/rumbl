@@ -9,11 +9,15 @@ config :rumbl, Rumbl.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+# Drop requirements for password hashing intensiveness.
+config :comeonin, :bcrypt_log_rounds, 4
+config :comeonin, :pbkdf2_rounds, 1
+
 # Configure your database
 config :rumbl, Rumbl.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "password",
   database: "rumbl_test",
-  hostname: "localhost",
+  hostname: "172.17.0.2",
   pool: Ecto.Adapters.SQL.Sandbox
